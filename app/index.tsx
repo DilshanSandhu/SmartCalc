@@ -51,7 +51,7 @@ export default function HomeScreen() {
         </View>
       )}
 
-      {/* YOUR ORIGINAL UI */}
+      
       <Text style={styles.title}>SmartCalc</Text>
       <Text style={styles.subtitle}>Basic Calculator Screen</Text>
 
