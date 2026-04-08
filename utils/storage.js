@@ -1,30 +1,27 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-
 export const saveHistory = async (item) => {
   try {
-    const existing = await AsyncStorage.getItem("history");
-    const history = existing ? JSON.parse(existing) : [];
-    history.push(item);
-    await AsyncStorage.setItem("history", JSON.stringify(history));
+    const existingHistory = await AsyncStorage.getItem("history");
+    const historyArray = existingHistory ? JSON.parse(existingHistory) : [];
+    historyArray.push(item);
+    await AsyncStorage.setItem("history", JSON.stringify(historyArray));
   } catch (error) {
     console.log("Error saving history:", error);
   }
 };
 
-
 export const getHistory = async () => {
   try {
-    const existing = await AsyncStorage.getItem("history");
-    return existing ? JSON.parse(existing) : [];
+    const existingHistory = await AsyncStorage.getItem("history");
+    return existingHistory ? JSON.parse(existingHistory) : [];
   } catch (error) {
-    console.log("Error loading history:", error);
+    console.log("Error getting history:", error);
     return [];
   }
 };
 
-
-export const clearHistory = async () => {
+export const clearAllHistory = async () => {
   try {
     await AsyncStorage.removeItem("history");
   } catch (error) {
